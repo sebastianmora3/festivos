@@ -38,7 +38,7 @@ public class TipoControlador {
         return servicio.modificar(tipo);
     }
 
-    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.DELETE)
     public boolean eliminar(@PathVariable long id) {
         return servicio.eliminar(id);
     }
