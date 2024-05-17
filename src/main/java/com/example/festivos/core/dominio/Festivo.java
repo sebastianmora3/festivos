@@ -90,4 +90,16 @@ public class Festivo {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Festivo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", dia=" + dia +
+                ", mes=" + mes +
+                ", diaPascua=" + diaPascua +
+                ", tipo=" + (tipo != null ? tipo.getTipo() : "null") +
+                '}';
+    }
 }

@@ -3,6 +3,7 @@ package com.example.festivos.aplicacion;
 import com.example.festivos.core.dominio.Festivo;
 import com.example.festivos.core.interfaces.repositorios.IFestivoRepositorio;
 import com.example.festivos.core.interfaces.servicios.IFestivoServicio;
+import com.example.festivos.utils.Fecha;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +48,46 @@ public class FestivoServicio implements IFestivoServicio {
     public boolean eliminar(long id) {
         try {
             repositorio.deleteById(id);
-            return true; // Se eliminó correctamente
+            return true;
         } catch (EmptyResultDataAccessException e) {
-            return false; // No se encontró el festivo con el ID especificado
+            return false;
         }
     }
+
+    @Override
+    public String diasFestivos(int anio, int mes, int dia){
+
+        String msg = "No es festivo";
+
+        if( ! Fecha.validarFecha(anio, mes, dia)){
+            return msg = "Fecha No valida";
+        }
+
+        var bd = repositorio.findAll();
+        var diaPascua = Fecha.diaPascua(anio);
+
+        for (Festivo festivo : bd){
+
+            if(festivo.getTipo().getId() == 4L || festivo.getTipo().getId() == 3L){
+
+                var x = Fecha.sumarDias(anio,diaPascua[1],diaPascua[0],festivo.getDiaPascua());
+                festivo.setDia(x[0]);
+                festivo.setMes(x[1]);
+            }
+
+            if (festivo.getTipo().getId() == 2L || festivo.getTipo().getId() == 4L){
+
+                var x = Fecha.puenteFestivo(anio,festivo.getMes(),festivo.getDia());
+                festivo.setDia(x[0]);
+                festivo.setMes(x[1]);
+            }
+
+            if (festivo.getDia() == dia && festivo.getMes() == mes){
+                return "Es Festivo";
+            }
+        }
+
+        return msg;
+    }
+
 }

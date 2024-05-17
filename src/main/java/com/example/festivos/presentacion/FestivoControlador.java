@@ -40,4 +40,9 @@ public class FestivoControlador {
     public boolean eliminar(@PathVariable long id) {
         return servicio.eliminar(id);
     }
+
+    @RequestMapping(value = "/verificar/{anio}/{mes}/{dia}", method = RequestMethod.GET)
+    public String prueba(@PathVariable int anio, int mes, int dia){
+        return servicio.diasFestivos(anio, mes, dia);
+    }
 }

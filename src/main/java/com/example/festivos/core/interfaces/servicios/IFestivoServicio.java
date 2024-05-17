@@ -15,4 +15,6 @@ public interface IFestivoServicio {
     public Festivo modificar(Festivo Festivo);
 
     public boolean eliminar(long id);
+
+    public String diasFestivos(int anio, int mes, int dia);
 }

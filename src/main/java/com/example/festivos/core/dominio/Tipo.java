@@ -39,4 +39,12 @@ public class Tipo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Tipo{" +
+                "id=" + id +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 }
