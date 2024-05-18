@@ -27,7 +27,7 @@ public class Fecha {
         return (anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0;
     }
 
-    public static int zeller(int anio, int mes, int dia){
+    private static int zeller(int anio, int mes, int dia){
 
         if(mes <= 2){
             mes += 12;
@@ -39,7 +39,6 @@ public class Fecha {
 
         return  (dia + ( 13*(mes + 1)/5 ) + K + (K/4) + (J/4) + 5*J ) % 7;
     }
-
 
     public  static int[] sumarDias(int anio, int mes, int dia, int diasSumar){
 
@@ -74,7 +73,6 @@ public class Fecha {
     public static int[] puenteFestivo(int anio, int mes, int dia){
 
         int n = zeller(anio, mes, dia);
-        System.out.printf("\n Valor de n inicial "+ n);
 
         Map<Integer, Integer> valoresASumar = new HashMap<>();
         valoresASumar.put(1, 1);
@@ -85,8 +83,6 @@ public class Fecha {
         valoresASumar.put(3, 6);
 
         n = valoresASumar.getOrDefault(n, 0);
-        System.out.printf("\n Valor de n Nuevo "+ n);
-
 
         return sumarDias(anio, mes, dia, n);
     }

@@ -42,7 +42,7 @@ public class FestivoControlador {
     }
 
     @RequestMapping(value = "/verificar/{anio}/{mes}/{dia}", method = RequestMethod.GET)
-    public String prueba(@PathVariable int anio, int mes, int dia){
+    public String diasFestivos(@PathVariable int anio, int mes, int dia){
         return servicio.diasFestivos(anio, mes, dia);
     }
 }
