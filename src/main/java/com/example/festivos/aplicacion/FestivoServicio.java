@@ -7,6 +7,7 @@ import com.example.festivos.utils.Fecha;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -88,6 +89,39 @@ public class FestivoServicio implements IFestivoServicio {
         }
 
         return msg;
+    }
+
+    @Override
+    public List<Festivo> diasFestivoAnio(int anio){
+        List<Festivo> festivos = new ArrayList<>();
+
+        if (anio < 1){
+            return festivos;
+        }
+
+        var bd = repositorio.findAll();
+        var diaPascua = Fecha.diaPascua(anio);
+
+        for (Festivo festivo : bd){
+
+            if(festivo.getTipo().getId() == 4L || festivo.getTipo().getId() == 3L){
+
+                var x = Fecha.sumarDias(anio,diaPascua[1],diaPascua[0],festivo.getDiaPascua());
+                festivo.setDia(x[0]);
+                festivo.setMes(x[1]);
+            }
+
+            if (festivo.getTipo().getId() == 2L || festivo.getTipo().getId() == 4L){
+
+                var x = Fecha.puenteFestivo(anio,festivo.getMes(),festivo.getDia());
+                festivo.setDia(x[0]);
+                festivo.setMes(x[1]);
+            }
+
+            festivos.add(festivo);
+        }
+
+        return festivos;
     }
 
 }

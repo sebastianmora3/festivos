@@ -17,4 +17,6 @@ public interface IFestivoServicio {
     public boolean eliminar(long id);
 
     public String diasFestivos(int anio, int mes, int dia);
+
+    public List<Festivo> diasFestivoAnio(int anio);
 }

@@ -45,4 +45,9 @@ public class FestivoControlador {
     public String diasFestivos(@PathVariable int anio, int mes, int dia){
         return servicio.diasFestivos(anio, mes, dia);
     }
+
+    @RequestMapping(value = "/verificar/{anio}", method = RequestMethod.GET)
+    public List<Festivo> diasFestivoAnio(@PathVariable int anio){
+        return servicio.diasFestivoAnio(anio);
+    }
 }
