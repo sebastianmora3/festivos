@@ -15,6 +15,7 @@
 	<description>aplicacion festivos</description>
 	<properties>
 		<java.version>17</java.version>
+		<sonar.projectKey>sebastianmora3_festivos</sonar.projectKey>
 		<sonar.organization>sebastianmora3</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
