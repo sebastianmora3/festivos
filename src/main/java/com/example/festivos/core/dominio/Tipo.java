@@ -1,7 +1,6 @@
 package com.example.festivos.core.dominio;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "tipo")
