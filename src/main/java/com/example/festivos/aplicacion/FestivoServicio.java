@@ -61,7 +61,7 @@ public class FestivoServicio implements IFestivoServicio {
         String msg = "No es festivo";
 
         if( ! Fecha.validarFecha(anio, mes, dia)){
-            return msg = "Fecha No valida";
+            return "Fecha No valida";
         }
 
         var bd = repositorio.findAll();

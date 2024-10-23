@@ -9,8 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Festivo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_festivo")
-    @GenericGenerator(name = "secuencia_feestivo", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 

@@ -8,8 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Tipo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_tipo")
-    @GenericGenerator(name = "secuencia_tipo", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
